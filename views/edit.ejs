@@ -1,0 +1,39 @@
+<%- include('partials/head'); %>
+    <body>
+        <%- include('partials/navbar'); %>
+        <div class="container">
+            <%- include('partials/titlePokemonApp'); %>
+            <h2 class="text-center"> Editar Pokemon: <%= pokemon.name %> </h2>
+            <div class="row">
+                <div class="card mx-auto mt-5">
+                    <img src="<%= pokemon.image %>" alt="<%= pokemon.name %>" style="width: 400px; height: 400px;">
+                </div>
+
+                <div class="card mx-auto mt-5 col-md-6">
+                    <div class="card-body">
+                        <form class="mx-auto" action="/pokemons/edit/<%= pokemon.id %>" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputNombre">Nombre</label>
+                                    <input required name="name" type="text" class="form-control" id="inputNombre" value=<%= pokemon.name %>>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Nivel">Nivel</label>
+                                <input required name="level" type="number" class="form-control" id="Nivel" value=<%= pokemon.level %>>
+                            </div>
+                            <div class="form-group">
+                                <label for="Image">Image</label>
+                                <input required name="image" type="text" class="form-control" id="Image" value=<%= pokemon.image %>>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-success">Editar</button>
+                            </div>
+                        </form>
+                    </div>    
+                </div>    
+            </div>
+        </div>
+        <%- include('partials/scripts'); %>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<%- include('partials/head'); %>
+    <body>
+        <%- include('partials/navbar'); %>
+        <div class="container">
+            <%- include('partials/titlePokemonApp'); %>
+            <h2 class="text-center"> Agregar Pokemon </h2>
+            <div class="row">
+                <form class="mx-auto mt-5 col-md-6" action="/pokemons/add" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputNombre">Nombre</label>
+                            <input required name="name" type="text" class="form-control" id="inputNombre" placeholder="Ej: Pikachu">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputTipo">Tipo</label>
+                            <select class="custom-select" name="type" id="inputTipo">
+                                <option selected value="Fuego">Fuego</option>
+                                <option value="Agua">Agua</option>
+                                <option value="Planta">Planta</option>
+                                <option value="Electrico">Electrico</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nivel">Nivel</label>
+                        <input required name="level" type="number" class="form-control" id="Nivel" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="Ataque">Ataques</label>
+                        <br>
+                        <% ataques.forEach(ataque => { %>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="ataques" type="checkbox" value="<%= ataque._id %>"
+                                id="<%= ataque._id %>">
+                            <label class="form-check-label" for="<%= ataque._id %>">
+                                <%= ataque.name %>
+                            </label>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <div class="form-group">
+                        <label for="Image">Image</label>
+                        <input name="image" type="text" class="form-control" id="Image"
+                            placeholder="Pega la url de tu imagen">
+
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <%- include('partials/scripts'); %>
+    </body>
+</html>
